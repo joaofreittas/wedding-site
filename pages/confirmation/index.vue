@@ -14,7 +14,13 @@
           variant="danger"
           :show="errorOccur"
         >
-          Ops, ocorreu um erro! Fale com o João
+          {{ errorMessage }}
+      </b-alert>
+      <b-alert
+          variant="success"
+          :show="!errorOccur && showSuccessMessage"
+        >
+          Confirmação realizada! Agradecemos seu carinho :)
       </b-alert>
       <b-form-group
         label-for="input-name"
@@ -24,7 +30,7 @@
           id="input-name"
           v-model="form.name"
           type="text"
-          placeholder="Digite seu nome"
+          placeholder="Digite seu nome ou da sua família"
           required
         />
       </b-form-group>
@@ -41,7 +47,7 @@
         class="btn-confirm mt-3"
         @click="confirm"
       >
-        Confirmar presença
+        {{ labelButton }}
       </button>
     </section>
 
@@ -58,29 +64,51 @@ export default {
         name: '',
         message: ''
       },
-      errorOccur: false
+      errorOccur: false,
+      labelButton: 'Confirmar presença',
+      errorMessage: '',
+      showSuccessMessage: false
     }
   },
   methods: {
-    confirm() {
+    async confirm() {
       this.errorOccur = false;
+      this.showSuccessMessage = false;
 
       try {
+        if(this.form.name == '') {
+          throw new Error('Preencha seu nome! :)')
+        }
+
+        this.labelButton = 'Carregando...';
         console.log("[confirm] :: form -->", this.form)
+        await this.$ConfirmationService.confirmate(this.form);
+
+        this.successMessage()
         this.clearForm()
 
       } catch(error) {
         console.log("[confirm] :: error occurs -->", error)
+        this.errorMessage = error.message
+        this.showSuccessMessage = false;
         this.errorOccur = true;
 
       } finally {
-
+        this.labelButton = 'Confirmar presença';
       }
 
     },
+    successMessage() {
+      this.showSuccessMessage = true;
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+      }, 4000)
+    },
     clearForm() {
-      this.form.name = ''
-      this.form.message = ''
+      setTimeout(() => {
+        this.form.name = ''
+        this.form.message = ''
+      }, 1000)
     }
   }
 }
