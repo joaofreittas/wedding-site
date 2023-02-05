@@ -11,7 +11,7 @@
     <section class="form mt-3">
       <b-list-group>
         <b-list-group-item>
-          <a href="/">Lista de Presentes</a>
+          <a href="https://listas.pontofrio.com.br/joaoegabriele" target="_blank">Lista de Presentes</a>
         </b-list-group-item>
         <b-list-group-item>
           <a href="/confirmation">Confirmação de Presença</a>
@@ -67,7 +67,7 @@ export default {
   overflow: hidden;
   border-radius: 5px;
   padding: 25px 30px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   text-align: center;
 }
 .form h5 {
