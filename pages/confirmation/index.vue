@@ -20,7 +20,7 @@
           variant="success"
           :show="!errorOccur && showSuccessMessage"
         >
-          Confirmação realizada! Agradecemos seu carinho :)
+          Confirmação realizada! Agradecemos sua presença :)
       </b-alert>
       <b-form-group
         label-for="input-name"
