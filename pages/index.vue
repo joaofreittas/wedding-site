@@ -62,7 +62,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .form {
   margin: 0 auto;
   width: 500px;
