@@ -16,6 +16,9 @@
         <b-list-group-item>
           <a href="/confirmation">Confirmação de Presença</a>
         </b-list-group-item>
+        <b-list-group-item>
+          <a href="/location">Localização</a>
+        </b-list-group-item>
       </b-list-group>
     </section>
 
