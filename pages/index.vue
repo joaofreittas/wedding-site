@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <Menu />
     <div class="casal mt-3">
       <img class="img-casal" src="../static/casal.jpeg" alt="">
     </div>
@@ -8,7 +8,7 @@
       <img class="flower" src="../static/ramos2.png" alt="" />
     </div>
     <!-- CONFIRMATION FORM  -->
-    <section class="form mt-3">
+    <section class="form mt-1">
       <b-list-group>
         <b-list-group-item>
           <a href="https://listas.pontofrio.com.br/joaoegabriele" target="_blank">Lista de Presentes</a>

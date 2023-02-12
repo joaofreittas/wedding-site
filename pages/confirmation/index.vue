@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <Menu />
     <div class="casal mt-3">
       <img class="img-casal" src="../../static/casal.jpeg" alt="">
     </div>
