@@ -55,14 +55,14 @@
 </template>
 
 <script>
-
 export default {
   name: 'IndexPage',
   data() {
     return {
       form: {
         name: '',
-        message: ''
+        message: '',
+        date:''
       },
       errorOccur: false,
       labelButton: 'Confirmar presença',
@@ -81,6 +81,9 @@ export default {
         }
 
         this.labelButton = 'Carregando...';
+        this.form.formattedDate = this.formatDate(new Date());
+        this.form.date = new Date();
+
         console.log("[confirm] :: form -->", this.form)
         await this.$ConfirmationService.confirmate(this.form);
 
@@ -109,6 +112,17 @@ export default {
         this.form.name = ''
         this.form.message = ''
       }, 1000)
+    },
+    formatDate(date = new Date()) {
+      let data = new Date(date);
+      let dia  = data.getDate().toString().padStart(2, '0');
+      let mes  = (data.getMonth()+1).toString().padStart(2, '0');
+      let ano  = data.getFullYear();
+      let hour = data.getHours();
+      let minutes = data.getUTCMinutes();
+      let seconds = data.getSeconds();
+
+      return `${dia}/${mes}/${ano} ${hour}:${minutes}:${seconds}`;
     }
   }
 }
