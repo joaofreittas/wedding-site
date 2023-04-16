@@ -21,14 +21,22 @@ export default {
     { path: '/api', handler: '~/api/routes.js' }
   ],
   plugins: [
-    '~/plugins/api-client.js'
+    '~/plugins/api-client.js',
+    { src: '~/plugins/vueClipboard2.js', mode: 'client' },
   ],
   components: true,
   buildModules: [
   ],
   modules: [
     'bootstrap-vue/nuxt',
+    'nuxt-clipboard'
   ],
   build: {
+  },
+  clipboard: {
+    autoSetContainer: true
+  },
+  bootstrapVue: {
+    icons: true
   }
 }

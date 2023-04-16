@@ -2,22 +2,29 @@
   <div>
     <Menu />
     <div class="casal mt-3">
-      <img class="img-casal" src="../static/casal.jpeg" alt="">
+      <img class="img-casal" src="../../static/casal.jpeg" alt="">
     </div>
     <div class="decoration">
-      <img class="flower" src="../static/ramos2.png" alt="" />
+      <img class="flower" src="../../static/ramos2.png" alt="" />
     </div>
-    <!-- CONFIRMATION FORM  -->
+
     <section class="form mt-1">
       <b-list-group>
         <b-list-group-item>
-          <a href="/gifts">Lista de Presentes</a>
+          <a href="https://listas.pontofrio.com.br/joaoegabriele" target="_blank">Lista de Presentes</a>
         </b-list-group-item>
         <b-list-group-item>
-          <a href="/confirmation">Confirmação de Presença</a>
-        </b-list-group-item>
-        <b-list-group-item>
-          <a href="/location">Localização</a>
+          <p><b>Chave Pix:</b></p>
+          joao.frhb@gmail.com
+          <button
+            type="button"
+            v-clipboard:copy="pixKey"
+            v-clipboard:success="onCopy"
+            v-clipboard:error="onError"
+            class="btn-copy"
+          >
+            <b-icon icon="clipboard"></b-icon> Copiar
+          </button>
         </b-list-group-item>
       </b-list-group>
     </section>
@@ -26,38 +33,19 @@
 </template>
 
 <script>
-
 export default {
-  name: 'LinksPage',
+  name: 'IndexPage',
   data() {
     return {
-      form: {
-        name: '',
-        message: ''
-      },
-      errorOccur: false
+      pixKey:'joao.frhb@gmail.com'
     }
   },
   methods: {
-    confirm() {
-      this.errorOccur = false;
-
-      try {
-        console.log("[confirm] :: form -->", this.form)
-        this.clearForm()
-
-      } catch(error) {
-        console.log("[confirm] :: error occurs -->", error)
-        this.errorOccur = true;
-
-      } finally {
-
-      }
-
+    onCopy: function (e) {
+      console.log('copy key successfull')
     },
-    clearForm() {
-      this.form.name = ''
-      this.form.message = ''
+    onError: function (e) {
+      console.log('erro to copy key', e)
     }
   }
 }
@@ -70,7 +58,6 @@ export default {
   overflow: hidden;
   border-radius: 5px;
   padding: 25px 30px;
-  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   text-align: center;
 }
 .form h5 {
@@ -112,5 +99,15 @@ export default {
   margin: 0 auto;
   max-width: 100px;
   border-radius: 50%;
+}
+
+.btn-copy {
+  border:none;
+  border: 1px solid #BAA389;
+  border-radius: 5px;
+  background-color:#fff;
+  color:#333;
+  border-color:#BAA389;
+
 }
 </style>
